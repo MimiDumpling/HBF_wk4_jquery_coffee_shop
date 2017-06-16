@@ -50,7 +50,10 @@
 
     $('#coffee_image').attr('src', 'static/coffee_beans.jpg');
 
-    function makeCoffee() {
+    var drinksOrdered = [];
+
+    function makeCoffee(evt) {
+        drinksOrdered.push(evt);
         $('#coffee_image').attr('src', 'static/coffee_machine.jpg');
 
          setTimeout(function() {
@@ -60,9 +63,13 @@
          setTimeout(function() {
             $('#coffee_image').attr('src', 'static/coffee_beans.jpg');
          }, 4000);
+         console.log(drinksOrdered);
     }
 
-    $('#coffee_image').on('click', makeCoffee);
+    $('#coffee_image').on('click', function () {makeCoffee("Brew");});
+    $('#espresso').on('click', function () {makeCoffee("Espresso");});
+    $('#latte').on('click', function () {makeCoffee("Latte");});
+    $('#hot-chocolate').on('click', function () {makeCoffee("HotChocolate");});
 
 </script>
 
